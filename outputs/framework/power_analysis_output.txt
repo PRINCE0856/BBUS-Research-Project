@@ -1,0 +1,78 @@
+========================================================================================================
+BBUS POWER ANALYSIS  |  total sample 6,000 across 6 cities  |  alpha 0.05 two-sided, power 0.80
+========================================================================================================
+
+--- PART 1: how much the clustering of a geographic treatment costs you ---
+Treatment is 'within 500 m of a stop'. That is assigned to WARDS, not households.
+m = households sampled per ward.  Design effect = 1 + (m-1) x ICC
+
+ wards/city  hh/ward | ICC=0.02  | ICC=0.05  | ICC=0.1  
+         10      100 | DEFF  2.98 eff.N   336 | DEFF  5.95 eff.N   168 | DEFF 10.90 eff.N    92
+         20       50 | DEFF  1.98 eff.N   505 | DEFF  3.45 eff.N   290 | DEFF  5.90 eff.N   169
+         25       40 | DEFF  1.78 eff.N   562 | DEFF  2.95 eff.N   339 | DEFF  4.90 eff.N   204
+         40       25 | DEFF  1.48 eff.N   676 | DEFF  2.20 eff.N   455 | DEFF  3.40 eff.N   294
+         50       20 | DEFF  1.38 eff.N   725 | DEFF  1.95 eff.N   513 | DEFF  2.90 eff.N   345
+
+--- PART 2: Group A (Bengaluru, Jaipur, Bhubaneswar). Cross-section, 3,000 households ---
+MDE for FEMALE EMPLOYMENT, baseline 25%, in percentage points
+
+design                                 ICC 0.02     ICC 0.05      ICC 0.1
+pooled 3 cities, 25 wards each             5.9pp         7.6pp         9.8pp
+pooled 3 cities, 25 wards, +controls         4.9pp         6.4pp         8.2pp
+pooled, 50 wards each (20 hh/ward)         4.4pp         5.2pp         6.3pp
+single city, 25 wards, +controls           8.6pp        11.0pp        14.2pp
+
+MDE for MONTHLY TRANSPORT SPEND, mean Rs 1,500, SD Rs 1,200, in rupees/month
+
+design                                 ICC 0.02     ICC 0.05      ICC 0.1
+pooled 3 cities, 25 wards each            164Rs        211Rs        272Rs
+pooled 3 cities, 25 wards, +controls        137Rs        176Rs        227Rs
+pooled, 50 wards each (20 hh/ward)        121Rs        143Rs        175Rs
+single city, 25 wards, +controls          237Rs        306Rs        394Rs
+
+--- PART 3: Group B panel DiD. 450 treated + 450 control per city, 3 cities = 2,700 ---
+r = correlation between a person's wave-1 and wave-2 outcome.
+Panel DiD beats a same-size cross-section only when r > 0.5.
+
+FEMALE EMPLOYMENT, percentage points, 25 wards/city (36 hh/ward), controls R2=0.30
+
+                             ICC 0.02     ICC 0.05      ICC 0.1
+r = 0.3, pooled                  6.0pp         7.7pp         9.8pp
+r = 0.5, pooled                  5.1pp         6.5pp         8.3pp
+r = 0.7, pooled                  3.9pp         5.0pp         6.4pp
+r = 0.8, pooled                  3.2pp         4.1pp         5.2pp
+
+r = 0.5, single city             8.8pp        11.2pp        14.4pp
+r = 0.7, single city             6.8pp         8.7pp        11.1pp
+
+MONTHLY TRANSPORT SPEND, rupees/month, pooled 2,700, 25 wards/city, R2=0.30
+
+                             ICC 0.02     ICC 0.05      ICC 0.1
+r = 0.3                         167Rs        212Rs        272Rs
+r = 0.5                         141Rs        180Rs        230Rs
+r = 0.7                         109Rs        139Rs        178Rs
+r = 0.8                          89Rs        114Rs        145Rs
+
+--- PART 4: the vulnerability interaction (the triple-difference coefficient) ---
+A subgroup-difference test needs roughly 4x the sample of a main effect for the same MDE,
+so the detectable interaction is about 2x the main-effect MDE.
+
+  Group A pooled main effect (ICC 0.05):        6.4 pp
+  Group A pooled VI interaction, approx:        12.7 pp
+  Group B DiD main effect (ICC 0.05, r=0.7):    5.0 pp
+  Group B DiD VI interaction, approx:           10.0 pp
+
+--- PART 5: how many wards to buy, holding 1,000 households per city ---
+Same money, different spread. MDE for female employment, ICC 0.05, R2=0.30, single city.
+
+  wards   hh/ward    DEFF   effective N   MDE (pp)
+     10       100    5.95           168      15.7
+     15        66    4.25           235      13.2
+     20        50    3.45           290      11.9
+     25        40    2.95           339      11.0
+     30        33    2.60           385      10.4
+     40        25    2.20           455       9.5
+     50        20    1.95           513       9.0
+     60        16    1.75           571       8.5
+
+Doubling wards from 25 to 50 cuts the MDE by roughly a third, at no extra sample cost.

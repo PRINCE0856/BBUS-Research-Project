@@ -293,18 +293,108 @@ table([
  ('Trip length, duration, route, time of day','Drop','Comes from the traces, and more accurately than recall'),
 ], [Cm(5.0),Cm(3.4),Cm(8.2)])
 
-callout('A discrepancy that must be resolved before anything else',
- 'The April inception report specifies 6,000 respondents across six cities, at 800 to 1,200 per city, with about '
- '450 users and 450 non-users tracked longitudinally in each Group B city. The figure circulating in discussion is '
- '60,000. That is a tenfold difference. It determines the budget, the statistical power, the minimum detectable '
- 'effect, and how much weight the passive data must carry. Nothing else in the design can be finalised until this '
- 'is settled.', fill='FBEAEA', col=RGBColor(0x99,0x22,0x22))
+callout('Sample size: settled at 6,000',
+ 'Six thousand respondents across six cities, about 1,000 per city, with roughly 450 bus users and 450 non-users '
+ 'followed longitudinally in each Group B city. That figure is now fixed and Section 8 works out exactly what it '
+ 'can and cannot detect. The short version: the pooled estimate is sound, city-level estimates are not, and the '
+ 'vulnerability interaction needs a design change to survive.', fill='E8F2F2', col=TEAL)
 
 doc.add_page_break()
 
-# ============ 8 ============
-h1('8. From effects to rupees, and the traps in doing it')
-h2('8.1 Monetisation inputs')
+doc.add_page_break()
+
+# ============ 8 NEW ============
+h1('8. What 6,000 households can and cannot detect')
+para('Assumptions throughout: 5 per cent significance, 80 per cent power, equal split between treatment and '
+     'control, and 30 per cent of variance explained by controls where stated. Female employment is taken at a '
+     '25 per cent baseline and monthly household transport spend at a mean of Rs 1,500 with a standard deviation '
+     'of Rs 1,200. These are scoping figures. Replace them with pilot estimates before anything is fielded.')
+
+h2('8.1 The finding that should change the sampling plan')
+para('Bus access is defined geographically, as living within a 500-metre walkshed of a stop. That means the '
+     'treatment is assigned to wards, not to households. Households in the same ward share the treatment and share '
+     'unobserved neighbourhood characteristics, so the sample behaves as though it were far smaller than 1,000 per '
+     'city. The number of wards matters more than the number of households.')
+table([
+ ('Wards per city','Households per ward','Effective sample, ICC 0.05'),
+ ('10','100','168'),
+ ('20','50','290'),
+ ('25','40','339'),
+ ('40','25','455'),
+ ('50','20','513'),
+], [Cm(4.6),Cm(5.6),Cm(6.4)])
+callout('The cheapest improvement available to this design',
+ 'Spreading the same 1,000 households across 50 wards instead of 25 raises the effective sample by about half and '
+ 'cuts the minimum detectable effect by roughly a third. It costs nothing in sample size, only in field logistics. '
+ 'Target 40 to 50 wards per city at 20 to 25 households each.', fill='E8F2F2', col=TEAL)
+
+h2('8.2 Minimum detectable effects')
+para('Group A, cross-section, three cities pooled, 3,000 households. Female employment, percentage points.')
+table([
+ ('Design','ICC 0.02','ICC 0.05','ICC 0.10'),
+ ('25 wards per city, no controls','5.9','7.6','9.8'),
+ ('25 wards per city, with controls','4.9','6.4','8.2'),
+ ('50 wards per city, with controls','4.4','5.2','6.3'),
+ ('Single city, 25 wards, with controls','8.6','11.0','14.2'),
+], [Cm(6.4),Cm(3.4),Cm(3.4),Cm(3.4)])
+para('Group B, two-wave panel difference-in-differences, 2,700 followed. Panel data helps only when the same '
+     'person’s outcome is correlated across waves; write that correlation as r. Below r equals 0.5 the panel is '
+     'worse than a cross-section of the same size. For employment status r is plausibly 0.6 to 0.8; for expenditure '
+     'it is likely lower. Female employment, percentage points, pooled, with controls.')
+table([
+ ('','ICC 0.02','ICC 0.05','ICC 0.10'),
+ ('r = 0.3','6.0','7.7','9.8'),
+ ('r = 0.5','5.1','6.5','8.3'),
+ ('r = 0.7','3.9','5.0','6.4'),
+ ('r = 0.8','3.2','4.1','5.2'),
+ ('r = 0.7, single city','6.8','8.7','11.1'),
+], [Cm(6.4),Cm(3.4),Cm(3.4),Cm(3.4)])
+para('Monthly transport spend, rupees per month, pooled. Group A with controls: Rs 176 at 25 wards, Rs 143 at 50 '
+     'wards, at ICC 0.05. Group B panel at r equals 0.7: Rs 139. Single city: about Rs 300.')
+
+h2('8.3 Three consequences to accept now')
+bullet('City-level estimates are not credible; the pooled specification is the primary result. ',
+       'A single city gives a minimum detectable effect around 11 percentage points on employment and around '
+       'Rs 300 a month on spending. Effects that large are implausible, so any city-specific coefficient will be a '
+       'noisy null. Your second report already anticipated this. At 6,000 it stops being a contingency and becomes '
+       'the plan. State it in the methods section before anyone asks for a city ranking.')
+bullet('The vulnerability interaction is underpowered, and this is the real problem. ',
+       'A subgroup-difference test needs roughly four times the sample of a main effect for the same precision, so '
+       'the detectable interaction is about twice the main-effect size: around 12.7 percentage points for Group A '
+       'and around 10.0 for Group B. Those are not plausible effect sizes. As designed, the study is unlikely to '
+       'detect the differential benefit to vulnerable groups even if it is real.')
+bullet('Calibrate against the published effects. ',
+       'The Delhi Pink Pass study reports a 24 percentage point rise in female employment among marginalised '
+       'groups. An effect that large would be found comfortably. A more ordinary 3 to 5 percentage points would '
+       'not be, outside the pooled specification. Plan for the smaller number.')
+
+h2('8.4 Fixing the vulnerability interaction')
+para('The four-part vulnerability index is meant to make differential benefit a headline coefficient rather than a '
+     'subgroup footnote. That ambition is right and it is worth protecting. Three options, in order of preference.')
+bullet('Stratify and over-sample. ','Deliberately over-sample low-income, no-vehicle, disabled and elderly '
+       'households so the interaction is estimated on a balanced design rather than on whatever the population '
+       'happens to yield. This costs sampling design, not sample size, and it is the cheapest fix.', num=True)
+bullet('Reduce the index to a binary split. ','A continuous four-part index spends power on gradations the sample '
+       'cannot resolve. A single vulnerable versus non-vulnerable split, pre-registered, is far better powered.', num=True)
+bullet('Report it descriptively. ','Present stratified estimates with confidence intervals and state plainly that '
+       'the study is not powered to test the difference.', num=True)
+callout('Do not simply run the interaction and report a null',
+ 'With this design a null is uninformative. A policy audience will read it as "buses do not help the poor more", '
+ 'which the data cannot support in either direction. Pre-registering the primary pooled specification and the '
+ 'reduced vulnerability split is what protects the result from that misreading.',
+ fill='FBEAEA', col=RGBColor(0x99,0x22,0x22))
+
+h2('8.5 What the pilot must produce')
+bullet('The intra-cluster correlation for the main outcomes. ','Every number in this section moves with it. Across '
+       'the range 0.02 to 0.10 the minimum detectable effect changes by about 60 per cent. This is the '
+       'highest-value single output of a pilot.')
+bullet('The wave-to-wave correlation r. ','It decides whether the Group B panel is worth its cost.')
+bullet('Then re-run this analysis. ','Ward counts should be finalised on piloted values, not on the indicative '
+       'figures used here.')
+
+# ============ 9 ============
+h1('9. From effects to rupees, and the traps in doing it')
+h2('9.1 Monetisation inputs')
 table([
  ('Quantity','Source','Warning'),
  ('Value of statistical life, India','Hedonic wage estimates from Indian samples','Published Indian estimates differ by roughly three times. Never write "the Indian VSL". Name the study, year and sample, and run the analysis at both values'),
@@ -314,7 +404,7 @@ table([
  ('Social cost of carbon','India’s shadow carbon price','Feeds M3, not M1 or M2'),
 ], [Cm(3.6),Cm(4.4),Cm(8.6)])
 
-h2('8.2 Cost-benefit analysis is not social return on investment')
+h2('9.2 Cost-benefit analysis is not social return on investment')
 para('Your four models produce effect sizes. Turning those into a single social-return ratio requires valuation '
      'choices that a strict cost-benefit analyst will contest, because social return on investment is '
      'stakeholder-driven and theory-of-change based, while cost-benefit analysis is an external efficiency test. '
@@ -323,7 +413,7 @@ para('Report both. A conventional cost-benefit analysis with a benefit-cost rati
      'finance audience, and the three social-return lenses for the political audience. If a single social-return '
      'ratio is the only number in the report, a ministry economist will reject the whole thing.')
 
-h2('8.3 Sensitivity, done the way funders expect')
+h2('9.3 Sensitivity, done the way funders expect')
 bullet('Switching values. ','How far must each parameter move before the decision flips? This is the ADB format and '
        'it is the most persuasive presentation for a finance audience, because it converts an argument about '
        'assumptions into a testable threshold.')
@@ -335,7 +425,7 @@ bullet('Publish the uncertainty interval. ','The seven-city BRT study reports a 
        'possibility of net harm in the most pessimistic draw. Publishing that honesty is what made it credible.')
 
 # ============ 9 ============
-h1('9. Three findings that could go against us')
+h1('10. Three findings that could go against us')
 para('A framework that cannot lose is not evidence. These are the three results that would genuinely complicate the '
      'BBUS narrative, and each should be pre-committed to before the data comes in.')
 bullet('Bus riders may not breathe less. ','Indian in-vehicle measurements put buses above air-conditioned cars. '
@@ -350,10 +440,10 @@ para('Committing to report these before seeing the data is what separates resear
      'CEEW’s independence requires.')
 
 # ============ 10 ============
-h1('10. Sequencing')
+h1('11. Sequencing')
 table([
  ('Stage','What happens','Why in this order'),
- ('1','Settle the sample size question','Everything downstream depends on it'),
+ ('1','Pilot for intra-cluster correlation and wave-to-wave correlation; set ward counts','Sample size is fixed at 6,000, so ward spread is now the only lever on power'),
  ('2','Diagnose bias in the passive data against census strata','Tells you which strata the survey must over-sample'),
  ('3','Build and validate the mode classifier, with GTFS map-matching','Unlocks the passive data for M1, M2 and M4'),
  ('4','Finalise the survey instrument around the remaining gaps','Now the instrument can be short and cheap'),
@@ -366,9 +456,10 @@ table([
 
 # ============ SOURCES ============
 h1('Sources')
-para('The full annotated evidence base sits alongside this document in three files: the socio-economic evidence for '
-     'Model 1, the health evidence for Model 2, and the demand, elasticity and data-fusion methods. Each entry '
-     'carries its link, the design used and the reported result.')
+para('The full annotated evidence base sits alongside this document: the socio-economic evidence for Model 1, the '
+     'health evidence for Model 2, and the demand, elasticity and data-fusion methods. Two working notes accompany '
+     'them, one on the passive dataset and one on sample size and power. Each evidence entry carries its link, the '
+     'design used and the reported result.')
 para('Every one of those sources was located by web search alone. Full-text retrieval was blocked throughout. Two '
      'specific problems are already known: a reported reduction in harassment near new Delhi Metro stations appears '
      'as both 29 and 32 per cent in different secondary sources, and a claim that transport reduces school dropout '
