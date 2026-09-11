@@ -1,0 +1,585 @@
+%=====================================================================
+%  Appendices A-C
+%
+%  The published article numbers appendix tables and figures continuously
+%  with the main text (Table 7 is followed by Table A.8; Fig. 8 by
+%  Fig. B.9). The counters are therefore set explicitly below instead of
+%  being reset at each appendix section.
+%=====================================================================
+
+% Cells of the literature-review tables are set ragged right, as in the
+% published article.
+\newcolumntype{R}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Appendix tables/figures carry the appendix letter as a prefix: "A.8", not
+% "Appendix A.8" (\thesection spells out "Appendix A" in elsarticle).
+\renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+\renewcommand{\thefigure}{\Alph{section}.\arabic{figure}}
+
+%---------------------------------------------------------------------
+\section{Literature review}\label{app:literature}
+%---------------------------------------------------------------------
+\setcounter{table}{7}   % next table becomes A.8
+
+See Tables~\ref{tab:litreview1} and~\ref{tab:litreview2}.
+
+{\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{@{}
+    R{0.085\linewidth}
+    R{0.075\linewidth}
+    R{0.135\linewidth}
+    R{0.095\linewidth}
+    R{0.145\linewidth}
+    R{0.095\linewidth}
+    R{0.085\linewidth}
+    R{0.185\linewidth}@{}}
+  \caption{Summary of studies exploring cyclists' behavior and subjective safety
+    at shared paths (Part 1).}\label{tab:litreview1}\\
+  \toprule
+  Study & Study area & Objective & Data collection method & Attributes
+    & Behavior Indicators & Subjective Indicators & Findings\\
+  \midrule
+  \endfirsthead
+  \multicolumn{8}{@{}l}{\textit{Table \thetable\ (continued)}}\\
+  \toprule
+  Study & Study area & Objective & Data collection method & Attributes
+    & Behavior Indicators & Subjective Indicators & Findings\\
+  \midrule
+  \endhead
+  \bottomrule
+  \endlastfoot
+
+  \multicolumn{8}{@{}l}{\textbf{Shared path}}\\
+  \addlinespace[2pt]
+
+  \citet{kazemzadeh2024forwhom}
+    & Lund, Sweden
+    & Explore cyclists' comfort during interactions in shared spaces,
+      considering demographic heterogeneity
+    & Intercept survey (594 cyclists)
+    & 1. Cyclist demographics (age/gender/education)
+      2. Cycling experience
+      3. Interaction type (passing/meeting)
+    &
+    & Comfort
+    & 1. Female cyclists, older adults, and less experienced cyclists generally
+      report lower comfort in shared spaces
+      2. Significant demographic differences affect comfort perception,
+      highlighting the need for targeted infrastructure improvements.\\
+  \addlinespace[4pt]
+
+  \citet*{vonstulpnagel2024matter}
+    & Berlin, Germany
+    & Explore how environmental and demographic factors affect cyclists'
+      perceived safety
+    & Survey (21,500 participants)
+    & 1. Buffer type between cycling and pedestrian lane
+      (None/Greens/Cobbled)
+      2. Sidewalk usage (Free/Cafes/shops)
+    &
+    & Perceived safety
+    & Cyclists feel safe on sidewalks shared with pedestrians, at the expense of
+      pedestrians' subjective safety\\
+  \addlinespace[4pt]
+
+  \citet*{berghoefer2023prefer}
+    & Braun\-schweig (Campus), Germany
+    & Explore factors affecting cyclists' infrastructure preferences and
+      subjective safety
+    & Cycling simulator (39 participants)
+    & Advisory lane/Cycle path/Footpath:
+      1. Pedestrian volume (5/25 [pedestrians])
+      2. Vehicle volume (200/1000 [veh/h])
+      Street/Multi-use path:
+      1. Pedestrian volume (5/25 [pedestrians])
+      2. Vehicle volume (100/400 [veh/h])
+    &
+    & 1. Mental Comfort
+      2. Interaction
+      3. Environment
+      4. Ease of Use
+      5. Physical Comfort
+    & 1. Cycle paths that are separated from other road users were most
+      preferred, while crowded footpaths and uphill segments were least
+      preferred
+      2. Cyclists riding on paths/lanes involving pedestrians felt less safe and
+      comfortable when pedestrian volume was higher.\\
+  \addlinespace[4pt]
+
+  \citet{batista2023exploring}
+    & Braun\-schweig, Germany
+    & Explore factors affecting pedestrians' and cyclists' infrastructure
+      preferences
+    & Survey (408 participants)
+    & 1. Space configuration (central placement of design
+      elements/segregation types)
+      2. Design elements (benches/fountains/bol\-lards/play elements)
+      3. Presence of motor vehicles
+    & 1. Crossing path choice
+      2. Interaction behaviors
+    & 1. Comfort
+      2. Enjoyment level
+      3. Preference for design attributes
+    & 1. Both pedestrians and cyclists favor centrally located design elements
+      and protective barriers.
+      2. Motor vehicles are perceived negatively by both pedestrians and
+      cyclists.
+      3. Effective shared space designs incorporate integration, placemaking,
+      and informal segregation.\\
+  \addlinespace[4pt]
+
+  \citet{zhang2023space}
+    & Global (Systematic Review)
+    & Explore interactions and safety between pedestrians and micro-mobility
+      vehicles (MMVs) in shared spaces
+    & Systematic literature review (87 publications)
+    & 1. Infrastructure features
+      2. Road user characteristics
+      3. Operation condition
+    & 1. Swerving
+      2. Passing
+      3. Overtaking
+      4. Lateral displacement
+    & 1. Perceived safety
+      2. Comfort level
+      3. Attitudes toward pedestrians
+    & Key factors include sufficient infrastructure width, clear regulations,
+      and speed management. Effective solutions include user education and
+      infrastructure improvements.\\
+  \addlinespace[4pt]
+
+  \citet{pashkevich2022visual}
+    & Kraków, Poland
+    & Explore visual attention and speeds of pedestrians, cyclists, and electric
+      scooter (ES) riders
+    & Field experiment with eye tracker (12 participants)
+    & 1. Visual attention distribution (roadway/roadside/all three road users)
+      2. Speeds and interaction behaviors
+    & 1. Fixation frequency and duration
+      2. Interaction behaviors (maneuvering)
+    & 1. Perceived safety
+      2. Comfort level
+    & 1. Riders (bicycles and ES) mainly focus visual attention on roadway and
+      pedestrians, highlighting hazard awareness.
+      2. Pedestrians tend to look more at surroundings.
+      3. Cyclists and ES riders travel at similar speeds (16 km/h), suggesting
+      ES should be regulated similarly to bicycles for safety.\\
+  \addlinespace[4pt]
+
+  \citet{che2021interaction}
+    & Singapore
+    & Explore the relationship among perception, attitude, and behavior of
+      cyclists and pedestrians
+    & 1. Survey for subjective indicators (300 cyclists)
+      2. Video observation for behavior indicator (Before keeping left rule:
+      119 cyclists After keeping left rule: 59 cyclists)
+    & 1. On-coming pedestrian-cyclist passing
+      2. Cyclist overtaking pedestrian
+      3. Rule of keep left for all road users
+    & Lane-keeping action:
+      1. Keep left
+      2. Keep right
+      3. Zigzag
+    & 1. Perceived safety
+      2. Perceived control
+      3. Perceived priority
+    & 1. Cyclists' perceived control, perceived risk level, and perceived
+      priority influence their attitude and further affect their behavior
+      2. Cyclists tend to compensate for pedestrians' risks, thereby indicating
+      a more cooperative way of space-sharing\\
+  \addlinespace[4pt]
+
+  \citet{huang2021investigating}
+    & Hefei (Campus), China
+    & Explore how behavior of cyclists and different movements of pedestrian
+      crowds affect each other
+    & Closed-field experiment (95 participants)
+    & 1. Pedestrian and cyclist density (flow)
+      2. Pedestrian and cyclist flow direction
+      (homogeneous/unidirec\-tional/bidirectional)
+    & 1. Speed
+      2. Pedestrian lane formation
+    &
+    & 1. Cyclists travel slower when pedestrian density is higher
+      2. Pedestrian lanes were more concentrated in bidirectional flow than
+      unidirectional flow\\
+  \addlinespace[4pt]
+
+  \citet{gkekas2020perceived}
+    & Vancouver (Campus), Canada
+    & Explore factors affecting the risk of pedestrian-cyclist interactions
+    & Survey (337 participants)
+    &
+    &
+    & 1. Perceived safety
+      2. Comfort
+    & 1. Both pedestrians and cyclists considered crowding and pedestrian
+      inattention as key factors contributing to incidents
+      2. Cyclists feel safer when paths get wider\\
+  \addlinespace[4pt]
+
+  \citet{stulpnagel2020gaze}
+    & Freiburg, Germany
+    & Explore cyclists' gaze behavior relates to subjective risk perception and
+      local spatial configurations
+    & Field experiment with eye-tracking (20 participants)
+    & 1. Spatial complexity
+      2. Subjective risk perception
+    & 1. Sight vector length
+      2. Gaze angle
+      3. Fixation duration
+    & 1. Perceived safety
+    & 1. Cyclists' gaze behavior is strongly influenced by spatial openness and
+      complexity; open areas increase perceived risk.
+      2. Experienced cyclists demonstrated longer sight vectors and narrower
+      gaze angles, indicating more focused attention and hazard anticipation.
+      3. Recommendations for urban planning include balancing visibility and
+      spatial structure to manage visual workload and enhance cyclists'
+      perceived safety.\\
+\end{longtable}
+}
+
+{\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{@{}
+    R{0.085\linewidth}
+    R{0.075\linewidth}
+    R{0.135\linewidth}
+    R{0.095\linewidth}
+    R{0.145\linewidth}
+    R{0.095\linewidth}
+    R{0.085\linewidth}
+    R{0.185\linewidth}@{}}
+  \caption{Summary of studies exploring cyclists' behavior and subjective safety
+    at shared paths and unsignalized intersections (Part 2).}%
+  \label{tab:litreview2}\\
+  \toprule
+  Study & Study area & Objective & Data collection method & Attributes
+    & Behavior Indicators & Subjective Indicators & Findings\\
+  \midrule
+  \endfirsthead
+  \multicolumn{8}{@{}l}{\textit{Table \thetable\ (continued)}}\\
+  \toprule
+  Study & Study area & Objective & Data collection method & Attributes
+    & Behavior Indicators & Subjective Indicators & Findings\\
+  \midrule
+  \endhead
+  \bottomrule
+  \endlastfoot
+
+  \citet*{nikiforiadis2019can}
+    & Thessa\-loniki, Greece
+    & Explore factors influencing pedestrian perception of comfort and safety on
+      shared sidewalks and pedestrian street
+    & 1. Survey (300 pedestrians)
+      2. Field measurements
+    & 1. Pedestrian and bicycle lane widths
+      2. Pedestrian and bicycle volumes and speeds
+    &
+    & 1. Comfort
+      2. Perceived safety
+      3. Space sufficiency
+    & 1. Pedestrian comfort and safety negatively impacted by increasing bicycle
+      lane width relative to pedestrian area
+      2. Pedestrian perceived level of service strongly influenced by space
+      sufficiency and pedestrian unit flow rate, emphasizing the importance of
+      appropriate spatial design.\\
+  \addlinespace[4pt]
+
+  \citet{beitel2018assessing}
+    & Montreal (Campus), Canada
+    & Explore factors affecting the risk of pedestrian-cyclist interactions
+    & 1. Video observation for speed (2,200 cyclists)
+      2. Survey for conflict rate (872 responses)
+    & Pedestrian density (flow)
+    & 1. Speed
+      2. Conflict rate
+      3. Angle of approach
+      4. Post-encroachment time
+    &
+    & 1. Cyclists travel slower when pedestrian density is higher
+      2. Conflict rate increase when pedestrian density is higher\\
+  \addlinespace[4pt]
+
+  \citet{boufous2018impact}
+    & Sydney, Australia
+    & Explore how environmental factors affect cycling speed
+    & Video observation (5,421 cyclists)
+    & 1. Width ($\leq$3.5/$>$3.5 m)
+      2. Pedestrian flow ($<$20 /20-100/100-199/$\geq$200)
+      3. Centerline (with/without)
+      4. Commuter path (with/without)
+      5. Visual segregation (yes/no)
+    & Speed
+    &
+    & Cyclists travel slower on shared paths with smaller widths, higher
+      pedestrian flow, centerline, and visual segregation\\
+  \addlinespace[4pt]
+
+  \citet{essa2018road}
+    & Vancouver, Canada
+    & Explore factors affecting the risk of pedestrian-cyclist interactions
+    & Video observation (940 cyclists, 800 streets)
+    & 1. Pedestrian density (flow)
+      2. Dismount sign
+    & 1. Speed
+      2. Conflict rate
+    &
+    & 1. Cyclists travel slower when pedestrian density is higher
+      2. Conflict rate decreases when bicycle dismount sign is presented\\
+  \addlinespace[4pt]
+
+  \multicolumn{8}{@{}l}{\textbf{Unsignalized intersection}}\\
+  \addlinespace[2pt]
+
+  \citet{mohammadi2024understanding}
+    & Gothenburg, Sweden
+    & Explore factors affecting cyclist behavior by interacting with vehicles
+    & Cycling simulator (25 participants)
+    & 1. The difference in time to arrival at the intersection (DTA)
+      (1.2/2.5/3.5 [s])
+      2. Intersection visibility (IV) (22/27 [m])
+      3. Pedaling
+      4. Looking duration
+    & 1. Average speed
+      2. Braking distance
+      3. Yielding decision
+    &
+    & 1. Cyclist's DTA and IV significantly affect braking distance
+      2. Cyclist's pedaling, looking duration, and DTA have a significant impact
+      on cyclist's yielding behavior\\
+  \addlinespace[4pt]
+
+  \citet{mohammadi2023how}
+    & Gothenburg, Sweden
+    & Explore factors affecting cyclist behavior by interacting with vehicles
+    & Video observation (105 interactions)
+    & 1. Pedaling
+      2. Head movement
+      3. Hand gesture
+      4. Initial speed
+      5. The difference in time to arrival at the intersection (DTA)
+    & Yielding decision
+    &
+    & Cyclist's pedaling, head movement, DTA, and speed of cyclist and vehicle
+      have a significant impact on cyclist's yielding behavior\\
+  \addlinespace[4pt]
+
+  \citet{ng2017cyclist}
+    & Queensland, Australia
+    & Explore which types of cycling infrastructure cyclists perceive to be the
+      safest at unsignalized intersections
+    & Survey (214 Participants)
+    & 12 different types of cycling infrastructure with each type having three
+      different interactions with vehicles
+    &
+    & Perceived safety
+    & 1. Off-road bicycle paths and footpaths were perceived to be the safest
+      cycling infrastructure at unsignalized intersections
+      2. Cyclists' perceived safety is influenced by motorists' yielding
+      behavior toward them\\
+\end{longtable}
+}
+
+%---------------------------------------------------------------------
+\section{Perceived unsafety and stress}\label{app:unsafetystress}
+%---------------------------------------------------------------------
+\setcounter{figure}{8}   % next figure becomes B.9
+
+See Figs.~\ref{fig:b9} and~\ref{fig:b10}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.86\linewidth]{figB9_unsafety_stress_shared.pdf}
+  \caption{Perceived unsafety and stress in eight scenarios at the shared path
+    environment.}
+  \label{fig:b9}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.86\linewidth]{figB10_unsafety_stress_unsig.pdf}
+  \caption{Perceived unsafety and stress in eight scenarios at the unsignalized
+    intersection environment.}
+  \label{fig:b10}
+\end{figure}
+
+%---------------------------------------------------------------------
+\section{Model estimation results with all variables}\label{app:allvariables}
+%---------------------------------------------------------------------
+\setcounter{table}{9}   % next table becomes C.10
+
+See Tables~\ref{tab:c10}--\ref{tab:c14}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Model estimation results for participant average speed at the shared
+    path.}
+  \label{tab:c10}
+  \small
+  \begin{threeparttable}
+  \begin{tabular}{@{}l r r r l@{}}
+    \toprule
+    Variables & Coefficient & Std. error & t-value & p-value\\
+    \midrule
+    \multicolumn{5}{c}{Participant average speed [km/hour]}\\
+    \addlinespace[2pt]
+    Intercept                                        & 17.001 & 1.206 & 14.094 & \pvl\ ***\\
+    Path width high                                  &  3.146 & 0.563 &  5.584 & \pvl\ ***\\
+    Pedestrian flow high                             & -1.907 & 0.563 & -3.385 & 0.001 **\\
+    Bicycle flow high                                & -1.050 & 0.563 & -1.864 & 0.063\\
+    Road width high $\times$ Pedestrian flow high    &  0.314 & 0.651 &  0.482 & 0.630\\
+    Path width high $\times$ Bicycle flow high       & -0.941 & 0.651 & -1.446 & 0.149\\
+    Pedestrian flow high $\times$ Bicycle flow high  &  1.870 & 0.651 &  2.874 & 0.004 **\\
+    \midrule
+    \multicolumn{2}{@{}l}{Adjusted R-squared} & \multicolumn{3}{l}{0.485}\\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}[flushleft]\footnotesize
+    \item \sigstars
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Model estimation results for perceived unsafety at the shared path.}
+  \label{tab:c11}
+  \small
+  \begin{threeparttable}
+  \begin{tabular}{@{}l r r r l@{}}
+    \toprule
+    Variables & Odds ratio & Std. error & t-value & p-value\\
+    \midrule
+    \multicolumn{2}{@{}l}{Intercepts (Thresholds)}
+      & \multicolumn{3}{l}{Perceived unsafety [Likert]}\\
+    \addlinespace[2pt]
+    Perceived unsafety 1 vs 2 (or higher)             &   0.018 & 1.119 & -3.575 & \pvl\ ***\\
+    Perceived unsafety 2 (or lower) vs 3 (or higher)  &   0.355 & 1.097 & -0.944 & 0.345\\
+    Perceived unsafety 3 (or lower) vs 4 (or higher)  &   3.033 & 1.101 &  1.088 & 0.313\\
+    Perceived unsafety 4 (or lower) vs 5              & 175.550 & 1.235 &  4.185 & \pvl\ ***\\
+    \addlinespace[2pt]
+    Participant average speed                         &   0.892 & 0.041 & -2.798 & 0.005 **\\
+    Road Width high                                   &   0.655 & 0.436 & -0.972 & 0.331\\
+    Bicycle flow high                                 &   4.982 & 0.434 &  3.697 & \pvl\ ***\\
+    Pedestrian flow high                              &   3.947 & 0.422 &  3.254 & 0.001 **\\
+    Fixation on pedestrians (\%)                      &   0.996 & 0.014 & -0.274 & 0.784\\
+    Fixation on bicycles (\%)                         &   1.003 & 0.030 &  0.099 & 0.921\\
+    Road Width high $\times$ Pedestrian flow high     &   0.437 & 0.474 & -1.749 & 0.080\\
+    Road Width high $\times$ Bicycle flow high        &   0.327 & 0.476 & -2.374 & 0.018 *\\
+    Bicycle flow high $\times$ Pedestrian flow high   &   0.530 & 0.457 & -1.335 & 0.182\\
+    \midrule
+    \multicolumn{2}{@{}l}{Akaike information criterion (AIC)}
+      & \multicolumn{3}{l}{682.75}\\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}[flushleft]\footnotesize
+    \item \sigstars
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Model estimation results for participant average speed at the
+    unsignalized intersection.}
+  \label{tab:c12}
+  \small
+  \begin{threeparttable}
+  \begin{tabular}{@{}l r r r l@{}}
+    \toprule
+    Variables & Coefficient & Std. error & t-value & p-value\\
+    \midrule
+    \multicolumn{5}{c}{Participant average speed [km/hour]}\\
+    \addlinespace[2pt]
+    Intercept                                        & 16.023 & 1.621 &  9.883 & \pvl\ ***\\
+    Vehicle speed high                               & -7.468 & 0.757 & -9.862 & \pvl\ ***\\
+    Pedestrian flow high                             & -3.986 & 0.757 & -5.263 & \pvl\ ***\\
+    Bicycle flow high                                & -0.754 & 0.757 & -0.996 & 0.320\\
+    Vehicle speed high $\times$ Pedestrian flow high &  4.547 & 0.874 &  5.200 & \pvl\ ***\\
+    Vehicle speed high $\times$ Bicycle flow high    &  1.579 & 0.874 &  1.806 & 0.072\\
+    Pedestrian flow high $\times$ Bicycle flow high  &  1.000 & 0.874 &  1.144 & 0.254\\
+    \midrule
+    \multicolumn{2}{@{}l}{Adjusted R-squared} & \multicolumn{3}{l}{0.395}\\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}[flushleft]\footnotesize
+    \item \sigstars
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Model estimation results for perceived unsafety at the unsignalized
+    intersection.}
+  \label{tab:c13}
+  \small
+  \begin{threeparttable}
+  \begin{tabular}{@{}l r r r l@{}}
+    \toprule
+    Variables & Odds ratio & Std. error & t-value & p-value\\
+    \midrule
+    \multicolumn{2}{@{}l}{Intercepts (Thresholds)}
+      & \multicolumn{3}{l}{Perceived unsafety [Likert]}\\
+    \addlinespace[2pt]
+    Perceived unsafety 1 vs 2 (or higher)             & 0.072 & 0.887 & -6.183 & \pvl\ ***\\
+    Perceived unsafety 2 (or lower) vs 3 (or higher)  & 0.072 & 0.828 & -6.180 & \pvl\ ***\\
+    Perceived unsafety 3 (or lower) vs 4 (or higher)  & 0.540 & 0.818 & -0.354 & 0.723\\
+    Perceived unsafety 4 (or lower) vs 5              & 4.059 & 0.822 &  1.704 & 0.088\\
+    \addlinespace[2pt]
+    Participant average speed high                    & 0.795 & 0.033 & -7.028 & \pvl\ ***\\
+    Vehicle speed high                                & 5.468 & 0.438 &  7.883 & \pvl\ ***\\
+    Bicycle flow high                                 & 1.377 & 0.374 &  0.999 & 0.317\\
+    Pedestrian flow high                              & 0.823 & 0.401 & -0.389 & 0.757\\
+    Fixation on pedestrians (\%)                      & 1.020 & 0.014 &  1.369 & 0.171\\
+    Fixation on bicycles (\%)                         & 0.868 & 0.044 & -1.495 & 0.135\\
+    Fixation on vehicles (\%)                         & 1.055 & 0.020 &  2.716 & 0.007 **\\
+    Vehicle speed high $\times$ Pedestrian flow high  & 0.600 & 0.458 & -2.111 & 0.035 *\\
+    Vehicle speed high $\times$ Bicycle flow high     & 0.898 & 0.459 & -0.223 & 0.823\\
+    Bicycle flow high $\times$ Pedestrian flow high   & 1.843 & 0.437 &  1.403 & 0.162\\
+    \midrule
+    \multicolumn{2}{@{}l}{Akaike information criterion (AIC)}
+      & \multicolumn{3}{l}{834.31}\\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}[flushleft]\footnotesize
+    \item \sigstars
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Model estimation results for fixation on vehicles at the unsignalized
+    intersection.}
+  \label{tab:c14}
+  \small
+  \begin{threeparttable}
+  \begin{tabular}{@{}l r r r l@{}}
+    \toprule
+    Variables & Coefficient & Std. error & t-value & p-value\\
+    \midrule
+    \multicolumn{5}{c}{Fixation on vehicles [\%]}\\
+    \addlinespace[2pt]
+    Intercept                                        & 10.548 & 2.945 &  3.582 & \pvl\ ***\\
+    Participant average speed high                   & -0.238 & 0.087 & -2.730 & 0.007 **\\
+    Perceived unsafety high                          & -0.556 & 0.546 & -1.019 & 0.309\\
+    Vehicle speed high                               &  4.257 & 1.382 &  3.080 & 0.002 **\\
+    Pedestrian flow high                             & -1.489 & 1.282 & -1.162 & 0.246\\
+    Bicycle flow high                                & -0.363 & 1.215 & -0.299 & 0.765\\
+    Vehicle speed high $\times$ Pedestrian flow high & -0.701 & 1.457 & -0.481 & 0.631\\
+    Vehicle speed high $\times$ Bicycle flow high    & -0.175 & 1.424 & -0.123 & 0.902\\
+    Pedestrian flow high $\times$ Bicycle flow high  & -0.465 & 1.419 & -0.328 & 0.743\\
+    \midrule
+    \multicolumn{2}{@{}l}{Adjusted R-squared} & \multicolumn{3}{l}{0.579}\\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}[flushleft]\footnotesize
+    \item \sigstars
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
