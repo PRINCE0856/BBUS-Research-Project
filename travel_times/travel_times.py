@@ -77,8 +77,11 @@
 API_KEY = ""          # <<< PASTE YOUR TOMTOM KEY BETWEEN THE QUOTES
                       #     (or leave blank and set the TOMTOM_API_KEY env var)
 
-INPUT_FILE = "/Users/princek.patel/Downloads/Non_Shifters_120_Improved_Approx_Travel_Times.xlsx"
-OUTPUT_FILE = "/Users/princek.patel/Downloads/Travel_Times_FILLED.xlsx"
+# Plain file names, so the script looks for the xlsx BESIDE ITSELF and works on
+# any machine without editing. Absolute paths here would hard-code one person's
+# home folder and break for everyone else. Override either with --input/--output.
+INPUT_FILE = "Non_Shifters_120_Improved_Approx_Travel_Times.xlsx"
+OUTPUT_FILE = "Travel_Times_FILLED.xlsx"
 
 RICKSHAW_MAX_SPEED_KMPH = 45   # assumption for the Auto/Cab column - calibrate
 SHORT_TRIP_KM = 3.0            # below this, flag the row as unreliable

@@ -184,7 +184,7 @@ def get_contact():
                  "  the caller, so they can get in touch about a script that\n"
                  "  misbehaves. It is a condition of using the service.\n\n"
                  "  Set CONTACT near the top of this file, or run:\n"
-                 "      export OSM_CONTACT=you@ceew.in\n\n"
+                 "      export OSM_CONTACT=your.name@yourorg.com\n\n"
                  "  Policy: https://operations.osmfoundation.org/policies/nominatim/\n")
     return c
 
