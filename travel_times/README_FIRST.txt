@@ -5,6 +5,11 @@
  Fills three travel-time columns (2-Wheeler, Bus, Auto/Cab) for 120 survey
  respondents, from their recorded home and work areas.
 
+ THE SAME INSTRUCTIONS ARE IN "How_to_use.docx" IN THIS FOLDER, formatted for
+ reading on screen or printing. Open whichever you prefer - the content is the
+ same. This plain-text version is here because it opens on any machine, with
+ no Word needed.
+
  YOU NEED TO CHANGE ONE THING: your email address, in step 3 below.
  Nothing else. No file paths to edit.
 
