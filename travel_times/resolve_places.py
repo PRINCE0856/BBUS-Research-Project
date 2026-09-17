@@ -83,12 +83,33 @@ except ImportError as e:
     sys.exit(f"Missing library: {e.name}\n"
              f"Install both with:\n    python3 -m pip install requests openpyxl")
 
+_HERE = Path(__file__).resolve()
+
+if _HERE.stem == "travel_times":
+    sys.exit(f"\nThis file is saved as '{_HERE.name}', but it is the place-name\n"
+             f"resolver - not travel_times.py itself.\n"
+             f"  {_HERE}\n\n"
+             f"Saving it under that name overwrites the script it needs to read the\n"
+             f"PLACES dictionary from, so it now finds only itself.\n\n"
+             f"Fix it:\n"
+             f"  1. Rename this file to      resolve_places.py\n"
+             f"  2. Put the original         travel_times.py\n"
+             f"     back in the same folder\n"
+             f"  3. Run                      python3 resolve_places.py\n\n"
+             f"If the original is gone, recover it from the repo:\n"
+             f"  travel_times/travel_times.py on branch claude/zen-goodall-b59e51\n")
+
 try:
     from travel_times import BODY, HDRF, MED, NAVY, NOTEF, REVIEW, THIN, WHY, \
         AMBER, RED, YELL, canonical, norm
-except ImportError:
-    sys.exit("Could not import travel_times.py.\n"
-             "  Put this script in the SAME FOLDER as travel_times.py.")
+except ImportError as _e:
+    sys.exit(f"\nCould not import travel_times.py.  ({_e})\n\n"
+             f"This script reads the PLACES dictionary from travel_times.py rather\n"
+             f"than keeping its own copy, so the two cannot drift apart. Both files\n"
+             f"must sit in the same folder:\n"
+             f"  {_HERE.parent}/\n"
+             f"      travel_times.py     <- the original TomTom script\n"
+             f"      resolve_places.py   <- this one\n")
 
 SEARCH_URL = "https://api.tomtom.com/search/2/search/{q}.json"
 UA = "ceew-bengaluru-traveltime/1.0"

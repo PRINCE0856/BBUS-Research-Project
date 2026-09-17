@@ -123,13 +123,36 @@ except ImportError as e:
     sys.exit(f"Missing library: {e.name}\n"
              f"Install both with:\n    python3 -m pip install requests openpyxl")
 
+_HERE = Path(__file__).resolve()
+
+if _HERE.stem == "travel_times":
+    # Saved over the very script it needs. The import below would find this
+    # file, not the TomTom one, so say so plainly rather than letting the
+    # circular import produce a misleading 'put them in the same folder'.
+    sys.exit(f"\nThis file is saved as '{_HERE.name}', but it is the KEYLESS\n"
+             f"companion script - not travel_times.py itself.\n"
+             f"  {_HERE}\n\n"
+             f"Saving it under that name overwrites the TomTom script it needs to\n"
+             f"read the PLACES dictionary from, so it now finds only itself.\n\n"
+             f"Fix it:\n"
+             f"  1. Rename this file to      travel_times_free.py\n"
+             f"  2. Put the original         travel_times.py\n"
+             f"     (the TomTom one) back in the same folder\n"
+             f"  3. Run                      python3 travel_times_free.py\n\n"
+             f"If the original is gone, recover it from the repo:\n"
+             f"  travel_times/travel_times.py on branch claude/zen-goodall-b59e51\n")
+
 try:
     from travel_times import AMBER, BODY, HDRF, NAVY, NOTEF, RED, REVIEW, THIN, \
         WHY, YELL, canonical, norm
-except ImportError:
-    sys.exit("Could not import travel_times.py.\n"
-             "  This script reads the PLACES dictionary from travel_times.py so\n"
-             "  the two cannot drift apart. Put them in the SAME FOLDER.")
+except ImportError as _e:
+    sys.exit(f"\nCould not import travel_times.py.  ({_e})\n\n"
+             f"This script reads the PLACES dictionary from travel_times.py rather\n"
+             f"than keeping its own copy, so the two cannot drift apart. Both files\n"
+             f"must sit in the same folder:\n"
+             f"  {_HERE.parent}/\n"
+             f"      travel_times.py        <- the original TomTom script\n"
+             f"      travel_times_free.py   <- this one\n")
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 VALHALLA_URL = "https://valhalla1.openstreetmap.de/route"
