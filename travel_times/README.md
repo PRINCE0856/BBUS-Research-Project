@@ -5,19 +5,70 @@ Scripts for filling the three travel-time columns in the non-shifters OD file
 
 | File | What it does |
 |---|---|
-| `travel_times.py` | Fills the 2-Wheeler / Bus / Auto-Cab columns from TomTom routing. Writes `Travel_Times_FILLED.xlsx`. |
-| `resolve_places.py` | Companion. Proposes canonical names for the area strings `travel_times.py` could not match, as an evidence table. Writes `Place_Candidates.xlsx`. |
-| `_mocktest.py` | Offline test scaffold for `resolve_places.py`. Fake TomTom responses, so logic changes can be checked without network or API quota. |
+| `travel_times.py` | Fills the 2-Wheeler / Bus / Auto-Cab columns from TomTom routing, traffic-aware. Needs a free TomTom key. Writes `Travel_Times_FILLED.xlsx`. |
+| `travel_times_free.py` | Same output, **no API key**: Nominatim geocoding + Valhalla routing on OSM data. **No traffic model** — free-flow times only. Writes `Travel_Times_FILLED_free.xlsx`. |
+| `resolve_places.py` | Companion. Proposes canonical names for the area strings that could not be matched, as an evidence table. Needs a TomTom key. Writes `Place_Candidates.xlsx`. |
+| `_mocktest.py`, `_mocktest_free.py` | Offline test scaffolds. Fake API responses, so logic changes can be checked without network or quota. |
 
-Both scripts need `requests` and `openpyxl`, and a free TomTom key
-(https://developer.tomtom.com/ — email signup, no credit card).
+`travel_times_free.py` and `resolve_places.py` both import the `PLACES`
+dictionary from `travel_times.py` rather than keeping a copy, so fixing a place
+name once fixes it everywhere. All three must stay in the same folder.
+
+## Which version to use
+
+`travel_times.py` (TomTom) is traffic-aware. `travel_times_free.py` is not, and
+that difference matters more than the cost:
+
+| | TomTom | Nominatim + Valhalla |
+|---|---|---|
+| API key | free, email signup | none |
+| Traffic | yes, and `--depart` models a chosen time | **none** — free-flow only |
+| Traffic delay column | yes | not produced, because there is nothing to put in it |
+| Modes | car, motorcycle, capped motorcycle, bus | auto, motorcycle, capped motorcycle, bus |
+| Geocoder strength on Bengaluru localities | stronger | weaker, so every match is logged for audit |
+| Run time for this file | ~2 min | ~8 min (self-rate-limited) |
+
+Free-flow times understate real Bengaluru peak travel substantially, and
+unevenly — a congested arterial is hit harder than a quiet side road, so the
+gap is not a constant you can multiply away. If the analysis turns on why
+people do not switch modes, congestion is close to the centre of the question.
+Use the keyless version for pipeline testing, for trip geometry, or where
+free-flow time is genuinely what is wanted; use the traffic-aware one for
+anything published, and say which service produced the numbers.
+
+All of them need `requests` and `openpyxl`. The TomTom scripts need a free key
+(https://developer.tomtom.com/ — email signup, no credit card). The keyless
+script needs a contact address instead, because Nominatim's usage policy
+requires callers to identify themselves.
 
 ```bash
 python3 -m pip install requests openpyxl
-export TOMTOM_API_KEY=your_key_here
+export TOMTOM_API_KEY=your_key_here      # travel_times.py, resolve_places.py
+export OSM_CONTACT=you@ceew.in           # travel_times_free.py
 ```
 
-## Run it
+## Run it, keyless
+
+```bash
+cd travel_times
+python3 travel_times_free.py --dry-run   # no requests made
+python3 travel_times_free.py             # ~8 min, then Travel_Times_FILLED_free.xlsx
+```
+
+Nominatim and Valhalla are volunteer-run and donation-funded. Their usage
+policies are conditions of access: Nominatim allows a maximum of 1 request per
+second and requires an identifying User-Agent. The script rate-limits itself
+and caches everything, so re-runs cost no requests. Do not raise the rate.
+
+- Nominatim policy: https://operations.osmfoundation.org/policies/nominatim/
+- FOSSGIS OSM services: https://www.fossgis.de/arbeitsgruppen/osm-server/
+
+Read the `Geocoding` sheet in the output. It records what Nominatim matched for
+every place, whether it fell back to a shortened query, and how far the result
+sits from the city centre. A wrong point there is a wrong travel time
+everywhere it appears.
+
+## Run it, with TomTom
 
 ```bash
 cd travel_times
