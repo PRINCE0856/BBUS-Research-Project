@@ -1,0 +1,11 @@
+# caches - re-runs cost no API quota, safe to delete
+geocode_cache.json
+route_cache.json
+search_cache.json
+
+# outputs
+Travel_Times_FILLED.xlsx
+Place_Candidates.xlsx
+
+# survey data stays out of the repo
+Non_Shifters_120_Improved_Approx_Travel_Times.xlsx
